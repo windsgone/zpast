@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT and Zhipu Chat Demo</title>
+    <!-- 引入Ant Design CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/antd/4.18.2/antd.min.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        }
+
+        .chat-container {
+            width: 50%;
+            height: 600px; /* 设置固定高度 */
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #d9d9d9;
+            padding: 10px;
+            overflow-y: auto; /* 内容超出时显示滚动条 */
+            margin: 16px;
+            border-radius: 2px;
+        }
+
+        select {
+            margin-bottom: 10px;
+        }
+
+        #userInput {
+            width: 80%;
+            padding: 4px 11px;
+            margin: 16px 0;
+            display: inline-block;
+            border: 1px solid #d9d9d9;
+            border-radius: 2px;
+            box-sizing: border-box;
+        }
+
+        button {
+            color: #fff;
+            background-color: #1890ff;
+            border-color: #1890ff;
+            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+            padding: 6px 16px;
+            font-size: 14px;
+            border-radius: 2px;
+            cursor: pointer;
+            height: 32px;
+            line-height: 1.5715;
+            position: relative;
+            display: inline-block;
+            font-weight: 400;
+            white-space: nowrap;
+            text-align: center;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #40a9ff;
+            border-color: #40a9ff;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+        <!-- GPT聊天框 -->
+        <div class="chat-container">
+            <select id="gptModelSelect" class="ant-select">
+                <option value="gpt-3.5-turbo">GPT-3.5-turbo</option>
+                <option value="gpt-4">GPT-4</option>
+            </select>
+            <div id="gptChatBox" class="chat-box"></div>
+        </div>
+
+        <!-- 智谱聊天框 -->
+        <div class="chat-container">
+            <select id="zhipuModelSelect" class="ant-select">
+                <option value="glm-3-turbo">GLM-3-turbo</option>
+                <option value="glm-4">GLM-4</option>
+                <option value="glm-4v">GLM-4V</option>
+            </select>
+            <div id="zhipuChatBox" class="chat-box"></div>
+        </div>
+
+        <!-- 文心聊天框 -->
+        <div class="chat-container">
+            <select id="wenxinModelSelect" class="ant-select">
+                <option value="ERNIE-Bot 4.0">ERNIE-Bot 4.0</option>
+            </select>
+            <div id="wenxinChatBox" class="chat-box"></div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <input type="text" id="userInput" placeholder="Type your message" class="ant-input" />
+        <button onclick="sendQuestion()" class="ant-btn ant-btn-primary">Send</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
